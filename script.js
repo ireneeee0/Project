@@ -1,42 +1,55 @@
 
-const navLinks = document.querySelectorAll("nav a");
+// Select all navigation links
+const navLinks = document.querySelectorAll(".sidebar nav a");
+
+// Select all sections with IDs
 const sections = document.querySelectorAll(
-    ".home, .content-section"
+    ".main-content section[id]"
 );
 
-// Highlight the clicked navigation item
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.forEach(item => {
-            item.classList.remove("active");
-        });
+// Update the active navigation link
+function setActiveLink(sectionId) {
+    navLinks.forEach(link => {
+        const linkTarget = link.getAttribute("href");
 
-        link.classList.add("active");
+        if (linkTarget === `#${sectionId}`) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+}
+
+// Highlight the selected link when clicked
+navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+        const targetId = this.getAttribute("href").substring(1);
+        setActiveLink(targetId);
     });
 });
 
-// Highlight the navigation item for the visible section
+// Highlight the section currently visible on screen
 const observer = new IntersectionObserver(
     entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const currentId = entry.target.id;
+        const visibleSections = entries
+            .filter(entry => entry.isIntersecting)
+            .sort(
+                (a, b) =>
+                    b.intersectionRatio - a.intersectionRatio
+            );
 
-                navLinks.forEach(link => {
-                    link.classList.toggle(
-                        "active",
-                        link.getAttribute("href") ===
-                        `#${currentId}`
-                    );
-                });
-            }
-        });
+        if (visibleSections.length > 0) {
+            setActiveLink(visibleSections[0].target.id);
+        }
     },
     {
-        threshold: 0.3
+        root: null,
+        rootMargin: "-10% 0px -20% 0px",
+        threshold: [0.1, 0.3, 0.5, 0.7]
     }
 );
 
+// Observe each section
 sections.forEach(section => {
     observer.observe(section);
 });
