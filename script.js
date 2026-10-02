@@ -1,34 +1,28 @@
 
-// Select all navigation links
 const navLinks = document.querySelectorAll(".sidebar nav a");
-
-// Select all sections with IDs
 const sections = document.querySelectorAll(
     ".main-content section[id]"
 );
 
-// Update the active navigation link
+// Highlight the selected navigation item
 function setActiveLink(sectionId) {
     navLinks.forEach(link => {
-        const linkTarget = link.getAttribute("href");
-
-        if (linkTarget === `#${sectionId}`) {
-            link.classList.add("active");
-        } else {
-            link.classList.remove("active");
-        }
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${sectionId}`
+        );
     });
 }
 
-// Highlight the selected link when clicked
+// Handle navigation clicks
 navLinks.forEach(link => {
-    link.addEventListener("click", function () {
-        const targetId = this.getAttribute("href").substring(1);
-        setActiveLink(targetId);
+    link.addEventListener("click", () => {
+        const sectionId = link.getAttribute("href").slice(1);
+        setActiveLink(sectionId);
     });
 });
 
-// Highlight the section currently visible on screen
+// Highlight the section currently in view
 const observer = new IntersectionObserver(
     entries => {
         const visibleSections = entries
@@ -43,13 +37,9 @@ const observer = new IntersectionObserver(
         }
     },
     {
-        root: null,
-        rootMargin: "-10% 0px -20% 0px",
-        threshold: [0.1, 0.3, 0.5, 0.7]
+        threshold: [0.2, 0.4, 0.6],
+        rootMargin: "-10% 0px -20% 0px"
     }
 );
 
-// Observe each section
-sections.forEach(section => {
-    observer.observe(section);
-});
+sections.forEach(section => observer.observe(section));
