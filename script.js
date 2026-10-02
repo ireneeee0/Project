@@ -1,10 +1,11 @@
 
 const navLinks = document.querySelectorAll(".sidebar nav a");
+
 const sections = document.querySelectorAll(
     ".main-content section[id]"
 );
 
-// Highlight the selected navigation item
+// Highlight the active navigation link
 function setActiveLink(sectionId) {
     navLinks.forEach(link => {
         link.classList.toggle(
@@ -22,7 +23,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Highlight the section currently in view
+// Update the active link while scrolling
 const observer = new IntersectionObserver(
     entries => {
         const visibleSections = entries
@@ -42,4 +43,6 @@ const observer = new IntersectionObserver(
     }
 );
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(section => {
+    observer.observe(section);
+});
