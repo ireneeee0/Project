@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Irene Obera</title>
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --dark: #171525;
+            --light: #f8f7fc;
+            --text: #5e5b70;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px #0000000a;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a:hover {
+            color: var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 70px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 60px);
+            line-height: 1.15;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--text);
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            color: var(--primary);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #7040d5;
+            transform: translateY(-2px);
+        }
+
+        .profile {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: #e9ddff;
+            border: 8px solid white;
+            box-shadow: 0 10px 35px #8b5cf630;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* GENERAL SECTIONS */
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text);
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            color: var(--text);
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #eee9fa;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px #8b5cf61a;
+        }
+
+        .skill-card .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            border: 1px solid #eee9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px #0000000c;
+        }
+
+        .project-image {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eee6ff;
+            font-size: 50px;
+        }
+
+        .project-info {
+            padding: 22px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-content p {
+            color: var(--text);
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-links a {
+            border: 1px solid #ddd4f5;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 18px 0;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .profile {
+                width: 210px;
+                height: 210px;
+                font-size: 65px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">MyPortfolio.</a>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+
+            <div class="hero-text">
+                <span class="tag">Welcome to my portfolio</span>
+
+                <h1>Hello, I'm <span>Irene Obera</span></h1>
+
+                <h3>Student | Aspiring Web Developer</h3>
+
+                <p>
+                    Welcome to my personal portfolio! I am passionate about
+                    technology, creativity, and learning new skills.
+                    Explore my work, discover my skills, and get to know me.
+                </p>
+
+                <a href="#projects" class="btn">View My Projects</a>
+            </div>
+
+            <div class="hero-image">
+                <div class="profile">
+                    <!-- Replace this emoji with your photo -->
+                    👩🏻‍💻
+                    <!-- Example:
+                    <img src="my-photo.jpg" alt="My profile photo">
+                    -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+
+            <div class="section-title">
+                <span class="tag">Get to know me</span>
+                <h2>About Me</h2>
+            </div>
+
+            <div class="about-content">
+                <p>
+                    Hi! I'm Irene Obera, a student who is interested in
+                    technology and web development. I enjoy exploring new
+                    ideas, solving problems, and creating useful digital
+                    experiences.
+                </p>
+
+                <p>
+                    My goal is to improve my technical skills, gain practical
+                    experience, and develop projects that showcase my
+                    creativity and knowledge. I believe that every project
+                    is an opportunity to learn and grow.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+
+            <div class="section-title">
+                <span class="tag">What I can do</span>
+                <h2>My Skills</h2>
+                <p>Some skills I am learning and developing.</p>
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <div class="icon">🌐</div>
+                    <h3>HTML</h3>
+                    <p>Building webpage structures</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">🎨</div>
+                    <h3>CSS</h3>
+                    <p>Styling and designing websites</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">💻</div>
+                    <h3>Programming</h3>
+                    <p>Learning coding fundamentals</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="icon">🤝</div>
+                    <h3>Teamwork</h3>
+                    <p>Collaborating and communicating</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+        <div class="container">
+
+            <div class="section-title">
+                <span class="tag">My recent work</span>
+                <h2>My Projects</h2>
+                <p>Here are some projects I have worked on.</p>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-image">🌐</div>
+                    <div class="project-info">
+                        <h3>Personal Portfolio</h3>
+                        <p>
+                            A personal website showcasing my background,
+                            skills, projects, and contact information.
+                        </p>
+                        <a href="#home" class="project-link">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-info">
+                        <h3>QR Code System</h3>
+                        <p>
+                            A sample project concept using QR codes to
+                            provide quick access to digital information.
+                        </p>
+                        <a href="#contact" class="project-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">💡</div>
+                    <div class="project-info">
+                        <h3>Future Project</h3>
+                        <p>
+                            A space for another school project, website,
+                            application, or personal achievement.
+                        </p>
+                        <a href="#contact" class="project-link">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <span class="tag">Let's connect</span>
+                <h2>Contact Me</h2>
+            </div>
+
+            <div class="contact-content">
+                <p>
+                    Have a question, collaboration idea, or opportunity?
+                    Feel free to reach out. I'd love to hear from you!
+                </p>
+
+                <div class="contact-links">
+                    <a href="mailto:your-email@example.com">
+                        ✉ Email Me
+                    </a>
+
+                    <a href="https://www.facebook.com/your-profile"
+                       target="_blank" rel="noopener noreferrer">
+                        Facebook
+                    </a>
+
+                    <a href="https://www.linkedin.com/"
+                       target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; 2026 Irene Obera. All rights reserved.
+        </p>
+        <p>Designed and developed by Irene Obera.</p>
+    </footer>
+
+</body>
+</html>
