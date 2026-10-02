@@ -4,93 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Irene Obera | Portfolio</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
 <div class="portfolio">
 
     <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
-
-        <!-- PROFILE -->
         <div class="profile">
             <img src="profile.jpg" alt="Irene Obera">
-
             <h2>Irene Obera</h2>
             <p>Student | Aspiring Developer</p>
         </div>
 
-        <!-- SOCIAL MEDIA -->
         <div class="socials">
-            <a href="https://facebook.com/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Facebook">f</a>
-
-            <a href="https://instagram.com/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Instagram">◎</a>
-
-            <a href="https://github.com/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="GitHub">⌘</a>
-
-            <a href="https://linkedin.com/"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="LinkedIn">in</a>
+            <a href="https://facebook.com/" aria-label="Facebook">f</a>
+            <a href="https://instagram.com/" aria-label="Instagram">◎</a>
+            <a href="https://github.com/" aria-label="GitHub">⌘</a>
+            <a href="https://linkedin.com/" aria-label="LinkedIn">in</a>
         </div>
 
-        <!-- NAVIGATION MENU -->
         <nav>
             <a href="#home" class="active">
-                <span class="nav-icon">⌂</span>
-                <span>Home</span>
+                <span class="nav-icon">⌂</span> Home
             </a>
-
             <a href="#about">
-                <span class="nav-icon">♙</span>
-                <span>About</span>
+                <span class="nav-icon">♙</span> About
             </a>
-
             <a href="#skills">
-                <span class="nav-icon">⚙</span>
-                <span>Skills</span>
+                <span class="nav-icon">⚙</span> Skills
             </a>
-
             <a href="#projects">
-                <span class="nav-icon">▣</span>
-                <span>Projects</span>
+                <span class="nav-icon">▣</span> Projects
             </a>
-
             <a href="#contact">
-                <span class="nav-icon">✉</span>
-                <span>Contact</span>
+                <span class="nav-icon">✉</span> Contact
             </a>
         </nav>
-
     </aside>
 
-    <!-- RIGHT MAIN CONTENT -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
 
         <!-- HOME SECTION -->
         <section class="home" id="home">
 
+            <!-- LEFT: INTRODUCTION -->
             <div class="hero-text">
                 <p class="welcome">WELCOME TO MY PORTFOLIO</p>
 
-                <h1>
-                    I'm <span>Irene Obera</span>
-                </h1>
+                <h1>I'm <span>Irene Obera</span></h1>
 
                 <p class="role">
                     Student &amp; Aspiring Web Developer
@@ -106,11 +71,15 @@
                 </a>
             </div>
 
+            <!-- RIGHT: PROFILE IMAGE -->
+            <div class="hero-image">
+                <img src="hero.jpg" alt="Irene Obera - Profile Photo">
+            </div>
+
         </section>
 
-        <!-- ABOUT SECTION -->
+        <!-- ABOUT -->
         <section class="content-section" id="about">
-
             <h2 class="section-title">About Me</h2>
             <div class="underline"></div>
 
@@ -125,12 +94,10 @@
                 and create useful digital experiences through
                 creativity, dedication, and continuous learning.
             </p>
-
         </section>
 
-        <!-- SKILLS SECTION -->
+        <!-- SKILLS -->
         <section class="content-section" id="skills">
-
             <h2 class="section-title">My Skills</h2>
             <div class="underline"></div>
 
@@ -140,154 +107,98 @@
             </p>
 
             <div class="card-container">
-
                 <div class="card">
                     <div class="card-icon">🌐</div>
                     <h3>HTML</h3>
-                    <p>
-                        Creating the structure and content
-                        of web pages.
-                    </p>
+                    <p>Creating the structure of web pages.</p>
                 </div>
 
                 <div class="card">
                     <div class="card-icon">🎨</div>
                     <h3>CSS</h3>
-                    <p>
-                        Designing website layouts, colors,
-                        and responsive interfaces.
-                    </p>
+                    <p>Designing layouts, colors, and responsive interfaces.</p>
                 </div>
 
                 <div class="card">
                     <div class="card-icon">💻</div>
                     <h3>Programming</h3>
-                    <p>
-                        Learning coding fundamentals and
-                        problem-solving techniques.
-                    </p>
+                    <p>Learning coding fundamentals and problem-solving.</p>
                 </div>
 
                 <div class="card">
                     <div class="card-icon">🤝</div>
                     <h3>Teamwork</h3>
-                    <p>
-                        Collaborating with others and
-                        communicating ideas effectively.
-                    </p>
+                    <p>Collaborating and communicating ideas effectively.</p>
                 </div>
-
             </div>
-
         </section>
 
-        <!-- PROJECTS SECTION -->
+        <!-- PROJECTS -->
         <section class="content-section" id="projects">
-
             <h2 class="section-title">My Projects</h2>
             <div class="underline"></div>
 
-            <p class="description">
-                Here are some projects and concepts that
-                represent my learning and development.
-            </p>
-
             <div class="card-container">
-
-                <div class="card project-card">
+                <div class="card">
                     <div class="project-icon">🖥️</div>
-
                     <h3>Personal Portfolio</h3>
-
                     <p>
-                        A personal website that presents my
-                        background, skills, and projects using
-                        HTML, CSS, and JavaScript.
+                        A personal website presenting my background,
+                        skills, and projects using HTML, CSS, and JavaScript.
                     </p>
-
                     <span class="project-tag">HTML · CSS · JS</span>
                 </div>
 
-                <div class="card project-card">
+                <div class="card">
                     <div class="project-icon">📍</div>
-
                     <h3>QR Code Mapping System</h3>
-
                     <p>
-                        A project concept that uses QR codes
-                        and digital mapping to help users
-                        access location-based information.
+                        A project concept using QR codes and digital
+                        mapping to help users access location-based information.
                     </p>
-
                     <span class="project-tag">Web Development</span>
                 </div>
 
-                <div class="card project-card">
+                <div class="card">
                     <div class="project-icon">💡</div>
-
                     <h3>Future Project</h3>
-
                     <p>
-                        A space for another school project,
-                        website, application, or technical
-                        achievement.
+                        A space for another school project, website,
+                        application, or technical achievement.
                     </p>
-
                     <span class="project-tag">Coming Soon</span>
                 </div>
-
             </div>
-
         </section>
 
-        <!-- CONTACT SECTION -->
+        <!-- CONTACT -->
         <section class="content-section" id="contact">
-
             <h2 class="section-title">Contact Me</h2>
             <div class="underline"></div>
 
             <p class="description">
-                Have a question, collaboration idea, or
-                opportunity? Feel free to reach out.
-                I'd love to hear from you!
+                Have a question, collaboration idea, or opportunity?
+                Feel free to reach out. I'd love to hear from you!
             </p>
 
             <div class="contact-details">
-
-                <p>
-                    <span>✉</span>
-                    your-email@example.com
-                </p>
-
-                <p>
-                    <span>📍</span>
-                    Philippines
-                </p>
-
+                <p>✉ your-email@example.com</p>
+                <p>📍 Philippines</p>
             </div>
 
-            <a href="mailto:your-email@example.com"
-               class="hero-button">
+            <a href="mailto:your-email@example.com" class="hero-button">
                 Send Me an Email
             </a>
-
         </section>
 
-        <!-- FOOTER -->
         <footer>
-            <p>
-                &copy; 2026 Irene Obera. All rights reserved.
-            </p>
-
+            <p>&copy; 2026 Irene Obera. All rights reserved.</p>
             <p>Designed and developed by Irene Obera.</p>
         </footer>
 
     </main>
-
 </div>
 
-<!-- JAVASCRIPT -->
 <script src="script.js"></script>
-
 </body>
 </html>
