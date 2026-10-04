@@ -176,7 +176,7 @@ a {
             rgba(5, 8, 18, 0.65) 38%,
             rgba(5, 8, 18, 0.15) 100%
         ),
-        url("background.png");
+        url("background.jpg");
 
     background-size: cover;
     background-position: center;
