@@ -180,7 +180,7 @@ nav a.active {
     /* dark overlay on top so the text is readable, then the picture */
     background:
         linear-gradient(rgba(15, 18, 32, 0.6), rgba(15, 18, 32, 0.6)),
-        url("profile.jpg") center / cover no-repeat;
+        url("background.jpg") center / cover no-repeat;
 }
 
 .hero-text h1 {
