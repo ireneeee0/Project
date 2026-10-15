@@ -1,123 +1,57 @@
-/* =========================
-   NAVIGATION
-========================= */
+// =========================
+// Highlight the active nav link while scrolling
+// =========================
 
-const navLinks =
-    document.querySelectorAll(
-        ".sidebar nav a"
-    );
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("nav a");
 
+function setActiveLink() {
+    const scrollPos = window.scrollY + window.innerHeight / 3;
 
-const sections =
-    document.querySelectorAll(
-        ".main-content section[id]"
-    );
+    sections.forEach((section) => {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
 
-
-
-/* =========================
-   ACTIVE NAVIGATION
-========================= */
-
-function setActiveLink(sectionId) {
-
-    navLinks.forEach(link => {
-
-        const linkSection =
-            link.getAttribute("href")
-                .substring(1);
-
-        link.classList.toggle(
-            "active",
-            linkSection === sectionId
-        );
-
+        if (scrollPos >= top && scrollPos < bottom) {
+            navLinks.forEach((link) => {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + section.id
+                );
+            });
+        }
     });
-
 }
 
+window.addEventListener("scroll", setActiveLink);
+window.addEventListener("load", setActiveLink);
 
 
-/* =========================
-   NAVIGATION CLICK
-========================= */
+// =========================
+// Fade-in on scroll
+// =========================
 
-navLinks.forEach(link => {
+const revealItems = document.querySelectorAll(
+    ".card, .info-box, .education-item, .section-title, .description"
+);
 
-    link.addEventListener(
-        "click",
-        function () {
+revealItems.forEach((item) => item.classList.add("reveal"));
 
-            const sectionId =
-                this.getAttribute("href")
-                    .substring(1);
-
-            setActiveLink(sectionId);
-
-        }
-    );
-
-});
-
-
-
-/* =========================
-   SCROLL DETECTION
-========================= */
-
-const observer =
-    new IntersectionObserver(
-
-        entries => {
-
-            const visibleSections =
-                entries
-                    .filter(
-                        entry =>
-                            entry.isIntersecting
-                    )
-                    .sort(
-                        (a, b) =>
-                            b.intersectionRatio -
-                            a.intersectionRatio
-                    );
-
-
-            if (
-                visibleSections.length > 0
-            ) {
-
-                setActiveLink(
-                    visibleSections[0]
-                        .target
-                        .id
-                );
-
-            }
-
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
         },
-
-        {
-            threshold: [
-                0.2,
-                0.4,
-                0.6
-            ],
-
-            rootMargin:
-                "-10% 0px -20% 0px"
-        }
-
+        { threshold: 0.15 }
     );
 
-
-
-/* =========================
-   OBSERVE SECTIONS
-========================= */
-
-sections.forEach(section => {
-
-    observer.observe(section);
-
-});
+    revealItems.forEach((item) => observer.observe(item));
+} else {
+    // Older browsers: just show everything
+    revealItems.forEach((item) => item.classList.add("visible"));
+}
